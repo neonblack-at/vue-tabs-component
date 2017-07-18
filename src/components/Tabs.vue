@@ -1,8 +1,8 @@
 <template>
     <div class="tabs-component">
-        <ul role="tablist" class="tabs-component-tabs">
+        <ul role="tablist" class="tabs-component-tabs" :class="navClass">
             <li v-for="tab in tabs"
-                :class="{ 'is-active': tab.isActive }"
+                :class="{ [navTabClass]: true, 'is-active': tab.isActive }"
                 class="tabs-component-tab"
                 role="presentation"
             >
@@ -30,6 +30,14 @@
     export default {
         props: {
             cacheLifetime: { default: 5 },
+            navClass: {
+                type: String,
+                default: ''
+            },
+            navTabClass: {
+                type: String,
+                default: ''
+            }
         },
 
         data: () => ({
