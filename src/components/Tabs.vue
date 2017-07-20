@@ -12,7 +12,7 @@
                    :aria-selected="tab.isActive"
                    @click="selectTab(tab.hash)"
                    :href="tab.hash"
-                   class="tabs-component-tab-a"
+                   :class="navLinkClass"
                    role="tab"
                 ></a>
 
@@ -37,6 +37,10 @@
             navTabClass: {
                 type: String,
                 default: ''
+            },
+            navLinkClass: {
+                type: [Object, String],
+                default: 'tabs-component-tab-a'
             }
         },
 
