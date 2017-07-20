@@ -2,7 +2,7 @@
     <div class="tabs-component">
         <ul role="tablist" :class="navClass">
             <li v-for="tab in tabs"
-                :class="{ [navTabClass]: true, 'is-active': tab.isActive }"
+                :class="{ [navTabClass]: true, [activeClass]: tab.isActive }"
                 role="presentation"
             >
 
@@ -11,7 +11,7 @@
                    :aria-selected="tab.isActive"
                    @click="selectTab(tab.hash)"
                    :href="tab.hash"
-                   :class="navLinkClass"
+                   :class="{ [navLinkClass]: true, [activeClass]: tab.isActive }"
                    role="tab"
                 ></a>
 
@@ -40,6 +40,10 @@
             navLinkClass: {
                 type: [Object, String],
                 default: 'tabs-component-tab-a'
+            },
+            activeClass: {
+                type: String,
+                default: 'active'
             }
         },
 
