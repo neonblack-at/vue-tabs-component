@@ -1,9 +1,8 @@
 <template>
     <div class="tabs-component">
-        <ul role="tablist" class="tabs-component-tabs" :class="navClass">
+        <ul role="tablist" :class="navClass">
             <li v-for="tab in tabs"
                 :class="{ [navTabClass]: true, 'is-active': tab.isActive }"
-                class="tabs-component-tab"
                 role="presentation"
             >
 
@@ -32,11 +31,11 @@
             cacheLifetime: { default: 5 },
             navClass: {
                 type: String,
-                default: ''
+                default: 'tabs-component-tabs'
             },
             navTabClass: {
                 type: String,
-                default: ''
+                default: 'tabs-component-tab'
             },
             navLinkClass: {
                 type: [Object, String],
