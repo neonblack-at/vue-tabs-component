@@ -9,7 +9,7 @@
                 <a v-html="tab.header"
                    :aria-controls="tab.hash"
                    :aria-selected="tab.isActive"
-                   @click="selectTab(tab.hash)"
+                   @click="selectTab(tab.hash, $event)"
                    :href="tab.hash"
                    :class="{ [navLinkClass]: true, [activeClass]: tab.isActive }"
                    role="tab"
@@ -44,6 +44,10 @@
             activeClass: {
                 type: String,
                 default: 'active'
+            },
+            disableHash: {
+                type: Boolean,
+                default: false
             }
         },
 
@@ -87,7 +91,11 @@
                 return this.tabs.find(tab => tab.hash === hash);
             },
 
-            selectTab(selectedTabHash) {
+            selectTab(selectedTabHash, e) {
+                if (e && this.disableHash) {
+                    e.preventDefault()
+                }
+
                 const selectedTab = this.findTab(selectedTabHash);
 
                 if (! selectedTab) {
